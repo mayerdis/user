@@ -27,7 +27,7 @@ Api de Creación usuarios
 * Coleccion de Endpoints POSTMAN
 
 
-En el Siguiente enlace pueden acceder a la coleccion con la cual se puden probar los endpoints con los datos de prueba precargados,
+En el Siguiente enlace pueden acceder a la coleccion con la cual se puden probar los endpoints con los datos de prueba precargados o bien importando el archivo [Postman Collection](User.postman_collection.json)
 
 [Abrir en POSTMAN](https://www.postman.com/red-shadow-456208/workspace/public-workspace/collection/12671277-291ceaac-f59b-4e22-a813-ea9c1a2d61be)
 
