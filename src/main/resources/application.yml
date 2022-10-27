@@ -1,0 +1,32 @@
+jwt:
+  secret: vSE3Bl1+RlN6W0qUNN54zvSE3Bl1+RlN6W0qUNN54zTY
+  expiration: 15
+validation:
+  emailRegExp: ^[A-Za-z0-9+_.-]+@(.+)$
+server:
+  port: 30000
+  error:
+    whitelabel:
+      enabled: false
+spring:
+  security:
+    user:
+      roles: ADMIN, USER
+      name: sa
+      password: sa
+  datasource:
+    url: jdbc:h2:mem:test;DB_CLOSE_ON_EXIT=FALSE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: sa
+  jpa:
+    show-sql: true
+    database-platform: org.hibernate.dialect.H2Dialect
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create-drop
+  h2:
+    console:
+      enabled: true
+  application:
+    name: User

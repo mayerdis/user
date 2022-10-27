@@ -1,0 +1,103 @@
+{
+	"info": {
+		"_postman_id": "291ceaac-f59b-4e22-a813-ea9c1a2d61be",
+		"name": "User",
+		"description": "Api de Usuarios",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12671277"
+	},
+	"item": [
+		{
+			"name": "Crear Usuario",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"name\": \"Michael Ayerdis\",\r\n        \"email\": \"michael_ayerdis@maag.org\",\r\n        \"password\": \"Hunt$?dfgd545er.2\",\r\n        \"phones\": [\r\n                    {\r\n                    \"number\": \"1234567\",\r\n                    \"citycode\": \"1\",\r\n                    \"contrycode\": \"57\"\r\n                    }\r\n        ]\r\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:30000/api/v1/user",
+					"host": [
+						"localhost"
+					],
+					"port": "30000",
+					"path": [
+						"api",
+						"v1",
+						"user"
+					]
+				},
+				"description": "\\-"
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar por Correo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:30000/api/v1/getUserByEmail?email=Michael_Ayerdis@maag.org",
+					"host": [
+						"localhost"
+					],
+					"port": "30000",
+					"path": [
+						"api",
+						"v1",
+						"getUserByEmail"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "Michael_Ayerdis@maag.org"
+						}
+					]
+				},
+				"description": "\\-"
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar Contrseña",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "localhost:30000/api/v1/updateUserPassword?id=de26be0e-8b61-4e94-8ef1-2883de96d715&password=Hunt$?dfgd545er2&newPassword=Hunt$?dfgd545963",
+					"host": [
+						"localhost"
+					],
+					"port": "30000",
+					"path": [
+						"api",
+						"v1",
+						"updateUserPassword"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "de26be0e-8b61-4e94-8ef1-2883de96d715"
+						},
+						{
+							"key": "password",
+							"value": "Hunt$?dfgd545er2"
+						},
+						{
+							"key": "newPassword",
+							"value": "Hunt$?dfgd545963"
+						}
+					]
+				},
+				"description": "\\-"
+			},
+			"response": []
+		}
+	]
+}
