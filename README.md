@@ -13,7 +13,7 @@ Api de Creación usuarios
 * **H2:** Es un motor de bases de datos embebido en el ORM Hibernate, asi mismo como en modo Cliente-Servidor.
 # H2 DATABASE
 
-[Abrir Consola](http://localhost:30000/h2-console/login.jsp)
+[Abrir Consola](http://localhost:8080/h2-console/login.jsp)
 
 |DB Name | DB User | DB Password |
 |--------|---------|-------------|
@@ -27,7 +27,7 @@ Api de Creación usuarios
 * Coleccion de Endpoints POSTMAN
 
 
-En el Siguiente enlace pueden acceder a la coleccion con la cual se puden probar los endpoints con los datos de prueba precargados o bien importando el archivo [Postman Collection](User.postman_collection.json)
+En el Siguiente enlace pueden acceder a la coleccion con la cual se puden probar los endpoints con los datos de prueba precargados o bien importando el archivo [User.postman_collection.json](User.postman_collection.json)
 
 [Abrir en POSTMAN](https://www.postman.com/red-shadow-456208/workspace/public-workspace/collection/12671277-291ceaac-f59b-4e22-a813-ea9c1a2d61be)
 
@@ -36,7 +36,7 @@ En el Siguiente enlace pueden acceder a la coleccion con la cual se puden probar
 
 En el siguiente enlace podran acceder a la documentacion generada por la libreria Swagger.
 
-[Explorar Documentación](http://localhost:30000/swagger-ui/index.html)
+[Explorar Documentación](http://localhost:8080/swagger-ui/index.html)
 
 # Diagrama de Flujo
 ![alt text](diagrama.jpg)
