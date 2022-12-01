@@ -31,6 +31,7 @@ En el Siguiente enlace pueden acceder a la coleccion con la cual se puden probar
 
 [Abrir en POSTMAN](https://www.postman.com/red-shadow-456208/workspace/public-workspace/collection/12671277-291ceaac-f59b-4e22-a813-ea9c1a2d61be)
 
+NOTA: El token de autorización debe ser remplazado por el generado por el endpoint de Login.
 
 # Swagger Documentación
 
@@ -39,4 +40,4 @@ En el siguiente enlace podran acceder a la documentacion generada por la libreri
 [Explorar Documentación](http://localhost:8080/swagger-ui/index.html)
 
 # Diagrama de Flujo
-![alt text](diagrama.jpg)
+![alt text](diagrama.jpeg)

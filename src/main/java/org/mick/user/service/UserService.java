@@ -13,6 +13,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.regex.Matcher;
@@ -70,13 +72,40 @@ public class UserService {
         } else {
             user = userOp.get();
         }
-        if (user.getPassword().equals(password) && !user.getPassword().equals(newPassword)){
-            user.setPassword(newPassword);
-            user.setToken(jsonWebTokenUtils.generateToken(user));
+        if (user.getPassword().equals(password)) {
+            if (!user.getPassword().equals(newPassword)){
+                user.setPassword(newPassword);
+                user.setToken(jsonWebTokenUtils.generateToken(user));
+            } else {
+                throw new ApplicationException("La nueva contraseña no puede ser igual al anterior");
+            }
         } else {
-            throw new ApplicationException("La nueva contraseña no puede ser igual al anterior");
+            throw new ApplicationException("La contraseña no incorrecta");
         }
+
         return userRepository.save(user);
+    }
+
+    public User login(String email, String password) throws ApplicationException, EntityNotFoundException {
+        User userLogin = userRepository.findUserByEmail(email);
+        if (userLogin!=null){
+            if (userLogin.getIsActive()){
+                if (password.equals(userLogin.getPassword())) {
+                    userLogin.setLastLogin(Timestamp.valueOf(LocalDateTime.now()));
+                    userLogin.setLoginFailed(0);
+                    return userRepository.save(userLogin);
+                } else {
+                    Integer item = userLogin.getLoginFailed();
+                    userLogin.setLoginFailed(++item);
+                    userRepository.save(userLogin);
+                    throw new ApplicationException("Contraseña incorrecta");
+                }
+            } else {
+                throw new ApplicationException("{usuario.inactivo}");
+            }
+        } else {
+            throw new EntityNotFoundException("Usuario no Encontrado");
+        }
     }
 
 }

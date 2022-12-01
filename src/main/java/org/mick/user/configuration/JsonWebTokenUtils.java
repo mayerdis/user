@@ -1,5 +1,6 @@
 package org.mick.user.configuration;
 
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.mick.user.Entity.User;
@@ -31,7 +32,7 @@ public class JsonWebTokenUtils implements Serializable {
     public String generateToken(User u) {
         Date dateExp = Date.from(LocalDateTime.now().plusMinutes(expiration).atZone(ZoneId.systemDefault()).toInstant());
         String[] authorities = new String[1];
-        authorities[0] = "ROLE_ADMIN";
+        authorities[0] = "USER";
         return Jwts.builder().setClaims(new HashMap<>())
                 .setSubject(u.getEmail())
                 .setIssuer(u.getName())
@@ -39,5 +40,22 @@ public class JsonWebTokenUtils implements Serializable {
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(dateExp)
                 .signWith(getKey()).compact();
+    }
+
+    public Claims getAllClaimsFromToken(String token) {
+        return Jwts.parserBuilder().setSigningKey(getKey()).build().parseClaimsJws(token).getBody();
+    }
+
+    public boolean isValidToken(String token){
+        try {
+            Claims claims = Jwts.parserBuilder().setSigningKey(getKey()).build().parseClaimsJws(token).getBody();
+            if (claims.getExpiration().after(new Date())){
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception ex) {
+            return false;
+        }
     }
 }

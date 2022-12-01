@@ -56,6 +56,7 @@ public class User implements Serializable {
     private Timestamp created;
 
     @JsonIgnore
+    @UpdateTimestamp
     @PastOrPresent
     @Column(name = "modified")
     private Timestamp modified;

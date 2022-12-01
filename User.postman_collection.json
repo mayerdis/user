@@ -14,7 +14,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n        \"name\": \"Michael Ayerdis\",\r\n        \"email\": \"michael_ayerdis@maag.org\",\r\n        \"password\": \"Hunt$?dfgd545er.2\",\r\n        \"phones\": [\r\n                    {\r\n                    \"number\": \"1234567\",\r\n                    \"citycode\": \"1\",\r\n                    \"contrycode\": \"57\"\r\n                    }\r\n        ]\r\n        }",
+					"raw": "{\r\n        \"name\": \"Michael Ayerdis\",\r\n        \"email\": \"michael_ayerdis@maag.org\",\r\n        \"password\": \"Hunt$?dfgd545er2\",\r\n        \"phones\": [\r\n                    {\r\n                    \"number\": \"1234567\",\r\n                    \"citycode\": \"1\",\r\n                    \"contrycode\": \"57\"\r\n                    }\r\n        ]\r\n        }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -41,9 +41,15 @@
 			"name": "Buscar por Correo",
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtaWNoYWVsX2F5ZXJkaXNAbWFhZy5vcmciLCJpc3MiOiJNaWNoYWVsIEF5ZXJkaXMiLCJhdXRob3JpdGllcyI6WyJVU0VSIl0sImlhdCI6MTY2OTg2MDI3OCwiZXhwIjoxNjY5ODYxMTc4fQ.vjnWvSS6zAcAFE-D6eHGgJajQ2hV4wsOSnuoIHFOw94",
+						"type": "text"
+					}
+				],
 				"url": {
-					"raw": "localhost:8080/api/v1/getUserByEmail?email=Michael_Ayerdis@maag.org",
+					"raw": "localhost:8080/api/v1/getUserByEmail?email=michael_ayerdis@maag.org",
 					"host": [
 						"localhost"
 					],
@@ -56,7 +62,7 @@
 					"query": [
 						{
 							"key": "email",
-							"value": "Michael_Ayerdis@maag.org"
+							"value": "michael_ayerdis@maag.org"
 						}
 					]
 				},
@@ -96,6 +102,36 @@
 					]
 				},
 				"description": "\\-"
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/v1/login?username=michael_ayerdis@maag.org&password=Hunt$?dfgd545er2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"login"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "michael_ayerdis@maag.org"
+						},
+						{
+							"key": "password",
+							"value": "Hunt$?dfgd545er2"
+						}
+					]
+				}
 			},
 			"response": []
 		}

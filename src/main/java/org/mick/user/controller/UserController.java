@@ -6,6 +6,7 @@ import org.mick.user.Dto.UserDto;
 import org.mick.user.Entity.User;
 import org.mick.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -45,11 +46,12 @@ public class UserController {
             consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> addUser(@Valid @RequestBody User newUser, @ApiIgnore Errors error) {
         if (error.hasErrors()) {
-
             return new ResponseEntity<>(new ErrorMessage("EX02",Objects.requireNonNull(error.getFieldError()).getDefaultMessage()), HttpStatus.BAD_REQUEST);
         } else {
             Optional<UserDto> rest = Optional.ofNullable(userService.saveUser(newUser)).map(new UsertoUserDto());
-            return new ResponseEntity<>(rest, HttpStatus.CREATED);
+            HttpHeaders h = new HttpHeaders();
+            h.add(HttpHeaders.AUTHORIZATION, rest.get().getToken());
+            return new ResponseEntity<>(rest, h, HttpStatus.CREATED);
         }
     }
 
@@ -73,6 +75,18 @@ public class UserController {
             , @NotEmpty @RequestParam String newPassword) {
         Optional<UserDto> userDto = Optional.ofNullable(userService.updateUser(id, password, newPassword)).map(new UsertoUserDto());
         return new ResponseEntity<>(userDto, HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "Endpoint de login de usuario")
+    @PostMapping(value = "api/v1/login",
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> loginUser(@NotEmpty @RequestParam String username
+            , @NotEmpty @RequestParam String password) throws Exception {
+        User restUser = userService.login(username, password);
+        Optional<UserDto> rest = Optional.ofNullable(restUser).map(new UsertoUserDto());
+        HttpHeaders h = new HttpHeaders();
+        h.add(HttpHeaders.AUTHORIZATION, rest.get().getToken());
+        return new ResponseEntity<>(rest,h, HttpStatus.OK);
     }
 
     private class UsertoUserDto implements Function<User, UserDto> {
