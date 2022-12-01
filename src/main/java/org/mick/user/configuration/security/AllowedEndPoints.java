@@ -10,7 +10,6 @@ public enum AllowedEndPoints {
     SWAGGER_DOCS("/v2/api-docs"),
     API_SIGN_UP("/api/v1/user"),
     LOGIN ("/api/v1/login"),
-    ACCESS_DENIED("/customError/**"),
     ERROR("/error");
 
     @Getter

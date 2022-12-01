@@ -4,6 +4,7 @@ Api de Creación usuarios
 * **Spring boot:** Es una herramienta que facilita la contruccion de aplicaciones basada en Spring Framework y
   otras librerias de terceros como Tomcat, Hibernate y mas con sus dependencias iniciales, necesitando unicamente
   configuracion basica, entre ellas las siguientes:
+    * Spring Security
     * Spring Web
     * Spring JPA
     * Spring Validation
@@ -32,6 +33,8 @@ En el Siguiente enlace pueden acceder a la coleccion con la cual se puden probar
 [Abrir en POSTMAN](https://www.postman.com/red-shadow-456208/workspace/public-workspace/collection/12671277-291ceaac-f59b-4e22-a813-ea9c1a2d61be)
 
 NOTA: El token de autorización debe ser remplazado por el generado por el endpoint de Login.
+
+![alt text](Token_Authorizacion.png)
 
 # Swagger Documentación
 
